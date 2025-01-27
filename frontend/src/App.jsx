@@ -1,6 +1,7 @@
 
 import './App.css'
 import Explorepage from './pages/Explorepage'
+import FeaturedPage from './pages/FeaturedPage'
 import Homepage from './pages/Homepage'
 
 function App() {
@@ -11,6 +12,7 @@ function App() {
     
      <Homepage />
      <Explorepage />
+     <FeaturedPage />
      </>
    
   )
