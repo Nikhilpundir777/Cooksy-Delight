@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+body {
+  background-color: #F0EBE1;  /* Adjust to match bg-background color */
+}
+
+
+@theme {
+    --color-dark: #262522;        /* Dark color */
+    --color-background: #F0EBE1;       /* Background color */
+    --color-primary1: #9FDC26;          /* Primary color 1 */
+    --color-primary2: #F29C33;          /* Primary color 2 */
+    --color-primary3: #EE6352;          /* Primary color 3 */
+    --color-primary4: #C4E5FC;          /* Primary color 4 */
+    --color-light: #FFFBF2;             /* Light color */
+}
+
+.section-mobile {
+    width: 343px;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  
+  /* For larger screens (Desktop) */
+  @media (min-width: 640px) {
+    .section-mobile {
+      width: 343px; /* Ensures consistency */
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .section-desktop {
+      width: 1325px;
+      margin-left: 64px;
+      margin-right: 64px;
+    }
+  }
