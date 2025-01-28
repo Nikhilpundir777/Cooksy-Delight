@@ -1,5 +1,6 @@
 
 import './App.css'
+import AboutPage from './pages/AboutPage'
 import Explorepage from './pages/Explorepage'
 import FeaturedPage from './pages/FeaturedPage'
 import Homepage from './pages/Homepage'
@@ -15,6 +16,7 @@ function App() {
      <Explorepage />
      <FeaturedPage />
      <RecipePage />
+     <AboutPage />
      </>
    
   )
