@@ -96,13 +96,14 @@ const FooterPage = () => {
           </div>
           <p className="text-center mt-4 font-extralight">
                 Copyright: © 2024 Cooksy Delight.<br />
+          </p>
                 <hr />
                 <p className="text-center mt-4 font-extralight">
                 Designed by Nikhil Pundir
                 </p>
             
 
-             </p>
+            
         </div>
 
 
@@ -190,13 +191,14 @@ const FooterPage = () => {
           </div>
           <p className="text-center mt-4 font-extralight">
                 Copyright: © 2024 Cooksy Delight.<br />
+          </p>
                 <hr />
                 <p className="text-center mt-4 font-extralight">
                 Designed by Nikhil Pundir
                 </p>
             
 
-             </p>
+            
         </div>
       </div>
     </section>
