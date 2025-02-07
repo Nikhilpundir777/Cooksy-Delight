@@ -1,15 +1,23 @@
+import { Link } from "react-router-dom";
 import SubscribeBar from "../components/SubscribeBar";
 import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa"; // Importing icons
 
 const FooterPage = () => {
+
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section>
+    <section id="subscribe">
       {/* Mobile Section */}
       <div className="section-mobile rounded-2xl h-[55rem] block md:hidden ">
-
-      <div className="w-full bg-dark rounded-2xl py-16">
+        <div className="w-full bg-dark rounded-2xl py-16">
           <div className="w-2/3 items-center text-center text-background mx-auto">
-            <h1 className="text-4xl font-bold ">
+            <h1 className="text-4xl font-bold">
               Deliciousness <br />
               to your inbox
             </h1>
@@ -18,32 +26,27 @@ const FooterPage = () => {
               tips, and exclusive insights straight to your inbox
             </p>
 
-        {/* Input Box */}
-      <input 
-        type="email" 
-        name="email" 
-        className="w-full border h-12 px-4 mb-4 rounded-full shadow-md dark:text-gray-800 dark:border-gray-700 dark:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary3"
-        placeholder="Enter your email..." 
-        required 
-      />
+            {/* Input Box */}
+            <input 
+              type="email" 
+              name="email" 
+              className="w-full border h-12 px-4 mb-4 rounded-full shadow-md dark:text-gray-800 dark:border-gray-700 dark:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-primary3"
+              placeholder="Enter your email..." 
+              required 
+            />
 
-      {/* Subscribe Button */}
-      <button 
-        type="submit" 
-        className="w-full p-3 bg-primary3 rounded-full text-white hover:bg-primary3/80 focus:outline-none"
-      >
-        Subscribe Now
-      </button>
-     
-
-
-            
+            {/* Subscribe Button */}
+            <button 
+              type="submit" 
+              className="w-full p-3 bg-primary3 rounded-full text-white hover:bg-primary3/80 focus:outline-none"
+            >
+              Subscribe Now
+            </button>
           </div>
         </div>
 
-
         <div className="w-full h-[24rem] bg-primary1 rounded-2xl mt-4">
-          <div className="w-2/3  mx-auto py-6">
+          <div className="w-2/3 mx-auto py-6">
             {/* Logo Section */}
             <div className="flex gap-2 items-center">
               <img src="/cooking.png" className="w-10 h-9" alt="Logo" />
@@ -55,16 +58,31 @@ const FooterPage = () => {
 
             {/* Navigation Links */}
             <div className="flex-col mx-auto gap-8 text-lg items-center font-extralight">
-              <h2 className="hover:text-gray-950 hover:font-semibold  cursor-pointer">
+              <h2
+                className="hover:text-gray-950 hover:font-semibold cursor-pointer"
+                onClick={() => scrollToSection('homepage')}
+              >
                 Home
               </h2>
-              <h2 className="hover:text-gray-950 hover:font-semibold cursor-pointer">
+              <h2
+                className="hover:text-gray-950 hover:font-semibold cursor-pointer"
+                onClick={() => scrollToSection('recipePage')}
+              >
                 Recipes
               </h2>
-              <h2 className="hover:text-gray-950 hover:font-semibold cursor-pointer">
+              
+              <Link to="/cooking/tips">
+              <h2
+                className="hover:text-gray-950 hover:font-semibold cursor-pointer"
+               
+              >
                 Cooking Tips
               </h2>
-              <h2 className="hover:text-gray-950 hover:font-semibold cursor-pointer">
+              </Link>
+              <h2
+                className="hover:text-gray-950 hover:font-semibold cursor-pointer"
+                onClick={() => scrollToSection('aboutPage')}
+              >
                 About Us
               </h2>
             </div>
@@ -95,29 +113,13 @@ const FooterPage = () => {
             </div>
           </div>
           <p className="text-center mt-4 font-extralight">
-                Copyright: © 2024 Cooksy Delight.<br />
+            Copyright: © 2024 Cooksy Delight.<br />
           </p>
-                <hr />
-                <p className="text-center mt-4 font-extralight">
-                Designed by Nikhil Pundir
-                </p>
-            
-
-            
+          <hr />
+          <p className="text-center mt-4 font-extralight">
+            Designed by Nikhil Pundir
+          </p>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
 
       {/* Desktop Section */}
@@ -150,16 +152,32 @@ const FooterPage = () => {
 
             {/* Navigation Links */}
             <div className="flex gap-8 text-lg items-center font-extralight">
-              <h2 className="hover:text-gray-950 hover:font-semibold  cursor-pointer">
+              <h2
+                className="hover:text-gray-950 hover:font-semibold cursor-pointer"
+                onClick={() => scrollToSection('homepage')}
+              >
                 Home
               </h2>
-              <h2 className="hover:text-gray-950 hover:font-semibold cursor-pointer">
+              <h2
+                className="hover:text-gray-950 hover:font-semibold cursor-pointer"
+                onClick={() => scrollToSection('recipePage')}
+              >
                 Recipes
               </h2>
-              <h2 className="hover:text-gray-950 hover:font-semibold cursor-pointer">
+              
+              <Link to="/cooking/tips">
+              <h2
+                className="hover:text-gray-950 hover:font-semibold cursor-pointer"
+               
+              >
+  
                 Cooking Tips
               </h2>
-              <h2 className="hover:text-gray-950 hover:font-semibold cursor-pointer">
+              </Link>
+              <h2
+                className="hover:text-gray-950 hover:font-semibold cursor-pointer"
+                onClick={() => scrollToSection('aboutPage')}
+              >
                 About Us
               </h2>
             </div>
@@ -190,15 +208,12 @@ const FooterPage = () => {
             </div>
           </div>
           <p className="text-center mt-4 font-extralight">
-                Copyright: © 2024 Cooksy Delight.<br />
+            Copyright: © 2024 Cooksy Delight.<br />
           </p>
-                <hr />
-                <p className="text-center mt-4 font-extralight">
-                Designed by Nikhil Pundir
-                </p>
-            
-
-            
+          <hr />
+          <p className="text-center mt-4 font-extralight">
+            Designed by Nikhil Pundir
+          </p>
         </div>
       </div>
     </section>

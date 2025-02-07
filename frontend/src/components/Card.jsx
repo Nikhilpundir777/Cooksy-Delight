@@ -1,4 +1,6 @@
-const Card = ({image,title,desc,time,prep,serves}) => {
+import {Link} from 'react-router-dom';
+
+const Card = ({image,title,desc,time,prep,serves,recipeId}) => {
   return (
     <div className=" w-[20rem] md:w-2xl h-[28rem] bg-light rounded-t-4xl">
         <div className="w-full">
@@ -19,9 +21,11 @@ const Card = ({image,title,desc,time,prep,serves}) => {
         </div>
 
         <div>
+        <Link to={`/viewrecipe/${recipeId}`}>
         <button className=" px-4 rounded-2xl md:px-8 py-2 bg-dark text-background  ">
           View Recipe
         </button>
+        </Link>
         </div>
 
         </div>

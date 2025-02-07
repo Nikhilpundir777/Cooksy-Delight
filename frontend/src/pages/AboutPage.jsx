@@ -1,6 +1,6 @@
 const AboutPage = () => {
   return (
-    <section className="bg-background">
+    <section id="aboutPage" className="bg-background">
       {/* Mobile Section */}
       <div className="section-mobile -mt-[15rem] h-[80rem] block border-1 border-gray-300 rounded-2xl shadow:md md:hidden">
 

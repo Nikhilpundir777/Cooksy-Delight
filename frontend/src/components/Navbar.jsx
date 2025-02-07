@@ -1,20 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLink, setActiveLink] = useState("Home"); // Default active link is Home
+  const navigate = useNavigate(); // This hook will be used for programmatic navigation
+  const location = useLocation(); // This hook gives us the current location/route
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLinkClick = (linkName) => {
-    setActiveLink(linkName);
+  // Scroll to specific section on the page
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
   };
+
+  // Update active link based on the current route
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setActiveLink("Home");
+    } else if (location.pathname === "/cooking/tips") {
+      setActiveLink("Cooking Tips");
+    } else if (location.pathname === "/recipe") {
+      setActiveLink("Recipe");
+    } else if (location.pathname === "/about") {
+      setActiveLink("About Us");
+    }
+  }, [location]);
 
   return (
     <nav className="section-desktop h-18 rounded-2xl bg-background shadow-md flex items-center justify-between px-6">
-      
       {/* Logo Section (Visible on both desktop and mobile) */}
       <div className="w-42 flex gap-2">
         <img src="/cooking.png" className="w-10 h-9" alt="Logo" />
@@ -28,25 +47,36 @@ const Navbar = () => {
       <div className="hidden md:flex h-9 gap-6 items-center font-light">
         <h2
           className={`cursor-pointer ${activeLink === 'Home' ? 'font-semibold border-b-2 border-primary3' : ''}`}
-          onClick={() => handleLinkClick('Home')}
+          onClick={() => {
+            setActiveLink('Home');
+            navigate("/"); // Navigate to homepage
+          }}
         >
           Home
         </h2>
         <h2
           className={`cursor-pointer ${activeLink === 'Recipe' ? 'font-semibold border-b-2 border-primary3' : ''}`}
-          onClick={() => handleLinkClick('Recipe')}
+          onClick={() => {
+            setActiveLink('Recipe');
+            scrollToSection('recipePage'); // Scroll to Recipe section
+          }}
         >
           Recipe
         </h2>
-        <h2
-          className={`cursor-pointer ${activeLink === 'Cooking Tips' ? 'font-semibold border-b-2 border-primary3' : ''}`}
-          onClick={() => handleLinkClick('Cooking Tips')}
-        >
-          Cooking Tips
-        </h2>
+        <Link to="/cooking/tips">
+          <h2
+            className={`cursor-pointer ${activeLink === 'Cooking Tips' ? 'font-semibold border-b-2 border-primary3' : ''}`}
+            onClick={() => setActiveLink('Cooking Tips')}
+          >
+            Cooking Tips
+          </h2>
+        </Link>
         <h2
           className={`cursor-pointer ${activeLink === 'About Us' ? 'font-semibold border-b-2 border-primary3' : ''}`}
-          onClick={() => handleLinkClick('About Us')}
+          onClick={() => {
+            setActiveLink('About Us');
+            scrollToSection('aboutPage'); // Scroll to About Us section
+          }}
         >
           About Us
         </h2>
@@ -54,8 +84,13 @@ const Navbar = () => {
 
       {/* Desktop Sign-Up Button (Hidden on mobile) */}
       <div className="hidden md:block">
-        <button className="rounded-2xl px-6 py-3 bg-dark text-background w-32">
-          Sign up
+        <button className="rounded-2xl px-6 py-3 bg-dark text-background w-32"
+          onClick={() => {
+            scrollToSection('subscribe'); // Scroll to About Us section
+          }}
+
+        >
+          Subscribe
         </button>
       </div>
 
@@ -85,37 +120,52 @@ const Navbar = () => {
             {/* Mobile Links */}
             <h2
               className={`cursor-pointer ${activeLink === 'Home' ? 'font-semibold border-b-2 border-primary3' : ''}`}
-              onClick={() => handleLinkClick('Home')}
+              onClick={() => {
+                setActiveLink('Home');
+                navigate("/"); // Navigate to homepage on mobile
+              }}
             >
               Home
             </h2>
             <h2
               className={`cursor-pointer ${activeLink === 'Recipe' ? 'font-semibold border-b-2 border-primary3' : ''}`}
-              onClick={() => handleLinkClick('Recipe')}
+              onClick={() => {
+                setActiveLink('Recipe');
+                scrollToSection('recipePage'); // Scroll to Recipe section
+              }}
             >
               Recipe
             </h2>
-            <h2
-              className={`cursor-pointer ${activeLink === 'Cooking Tips' ? 'font-semibold border-b-2 border-primary3' : ''}`}
-              onClick={() => handleLinkClick('Cooking Tips')}
-            >
-              Cooking Tips
-            </h2>
+            <Link to="/cooking/tips">
+              <h2
+                className={`cursor-pointer ${activeLink === 'Cooking Tips' ? 'font-semibold border-b-2 border-primary3' : ''}`}
+                onClick={() => setActiveLink('Cooking Tips')}
+              >
+                Cooking Tips
+              </h2>
+            </Link>
             <h2
               className={`cursor-pointer ${activeLink === 'About Us' ? 'font-semibold border-b-2 border-primary3' : ''}`}
-              onClick={() => handleLinkClick('About Us')}
+              onClick={() => {
+                setActiveLink('About Us');
+                scrollToSection('aboutPage'); // Scroll to About Us section
+              }}
             >
               About Us
             </h2>
 
             {/* Sign-Up Button in Mobile Menu */}
-            <button className="w-full bg-gray-700 text-background py-2 px-4 rounded-xl">
-              Sign up
+            <button className="w-full bg-gray-700 text-background py-2 px-4 rounded-xl"
+              onClick={() => {
+                scrollToSection('subscribe'); // Scroll to About Us section
+              }}
+            
+            >
+              Subscribe
             </button>
           </div>
         </div>
       )}
-
     </nav>
   );
 };
