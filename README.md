@@ -13,6 +13,7 @@
    ```sh
    git clone https://github.com/yourusername/cooksy-delight.git
    cd cooksy-delight
+   
 2. npm install
 3. npm run dev
 
