@@ -15,7 +15,7 @@ import ViewRecipe from "./pages/ViewRecipe";
 function App() {
   return (
     <Routes>
-      {/* Define your exact routes */}
+  
       <Route
         path="/"
         element={
